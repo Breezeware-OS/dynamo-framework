@@ -70,13 +70,14 @@
 
 ### 📌Contents
 
-🚀 [Overview](#overview)\
-💡 [Libraries Included](#libraries-included)\
-💡 [Using Dynamo](#using-dynamo)\
-💡 [Building From Source](#building-from-source)\
-📜 [Release notes](#️-release-notes)\
-📜 [License](#️license)\
+🚀 [Overview](#overview)  
+📚 [Libraries Included](#libraries-included)  
+🛠️ [Using Dynamo](#using-dynamo)  
+🔨 [Building From Source](#building-from-source)  
+📝 [Release Notes](#release-notes)  
+📄 [License](#license)  
 🤝 [Support](#support)
+
 
 <br/>
 

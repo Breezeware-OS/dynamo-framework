@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>net.breezeware.dynamo</groupId>
+    <artifactId>dynamo-notification</artifactId>
+    <version>1.44.0</version>
+  </parent>
+
+  <artifactId>dynamo-push-notification</artifactId>
+  <packaging>pom</packaging>
+
+  <name>Dynamo Push Notification</name>
+  <description>Dynamo Push Notification API and BFF library module</description>
+  <modules>
+    <module>dynamo-push-notification-bff</module>
+    <module>dynamo-push-notification-svc</module>
+  </modules>
+
+</project>

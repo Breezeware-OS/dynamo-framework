@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>net.breezeware.dynamo</groupId>
+    <artifactId>dynamo-push-notification</artifactId>
+    <version>1.44.0</version>
+  </parent>
+
+  <artifactId>dynamo-push-notification-bff</artifactId>
+
+  <name>Dynamo Push Notification BFF</name>
+  <description>BFF for Dynamo Push Notification</description>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>net.breezeware.dynamo</groupId>
+      <artifactId>dynamo-push-notification-svc</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>net.breezeware.dynamo.aws</groupId>
+      <artifactId>dynamo-aws-sns</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+  </dependencies>
+
+</project>

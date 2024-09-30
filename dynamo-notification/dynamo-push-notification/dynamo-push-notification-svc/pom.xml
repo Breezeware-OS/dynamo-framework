@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>net.breezeware.dynamo</groupId>
+    <artifactId>dynamo-push-notification</artifactId>
+    <version>1.44.0</version>
+  </parent>
+
+  <artifactId>dynamo-push-notification-svc</artifactId>
+  <name>Dynamo Push Notification Service</name>
+  <description>Dynamo Push Notification Service</description>
+
+  <dependencies>
+    <dependency>
+      <groupId>net.breezeware.dynamo</groupId>
+      <artifactId>dynamo-generics-crud</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>net.breezeware.dynamo</groupId>
+      <artifactId>dynamo-user-svc</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.querydsl</groupId>
+      <artifactId>querydsl-apt</artifactId>
+      <classifier>jakarta</classifier>
+    </dependency>
+
+    <dependency>
+      <groupId>com.querydsl</groupId>
+      <artifactId>querydsl-jpa</artifactId>
+      <classifier>jakarta</classifier>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.mysema.maven</groupId>
+        <artifactId>apt-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

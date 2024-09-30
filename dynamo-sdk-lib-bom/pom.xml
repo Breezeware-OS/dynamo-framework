@@ -1,0 +1,150 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>net.breezeware.dynamo</groupId>
+        <artifactId>dynamo-framework</artifactId>
+        <version>1.44.0</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>dynamo-sdk-lib-bom</artifactId>
+    <packaging>pom</packaging>
+    <name>Dynamo SDK BOM</name>
+    <description>Dynamo SDK Bill Of Materials (BOM) handling versions of
+        all the functional libraries provided by Dynamo SDK
+    </description>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>net.breezeware.dynamo</groupId>
+                <artifactId>dynamo-batch</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.breezeware.dynamo</groupId>
+                <artifactId>dynamo-csv</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.breezeware.dynamo</groupId>
+                <artifactId>dynamo-generics-crud</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.breezeware.dynamo</groupId>
+                <artifactId>dynamo-utils</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.breezeware.dynamo</groupId>
+                <artifactId>dynamo-iac</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.breezeware.dynamo</groupId>
+                <artifactId>dynamo-auth</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+
+            <!-- AWS modules -->
+            <dependency>
+                <groupId>net.breezeware.dynamo.aws</groupId>
+                <artifactId>dynamo-aws-sns</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.breezeware.dynamo.aws</groupId>
+                <artifactId>dynamo-aws-ses</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.breezeware.dynamo.aws</groupId>
+                <artifactId>dynamo-aws-s3</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.breezeware.dynamo.aws</groupId>
+                <artifactId>dynamo-aws-dynamodb</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.breezeware.dynamo</groupId>
+                <artifactId>dynamo-logging</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.breezeware.dynamo</groupId>
+                <artifactId>dynamo-form-builder-web-bff</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.breezeware.dynamo</groupId>
+                <artifactId>dynamo-form-svc</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.breezeware.dynamo</groupId>
+                <artifactId>dynamo-user-management-web-bff</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.breezeware.dynamo</groupId>
+                <artifactId>dynamo-user-svc</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.breezeware.dynamo</groupId>
+                <artifactId>dynamo-cognito-svc</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.breezeware.dynamo</groupId>
+                <artifactId>dynamo-workflow</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.breezeware.dynamo</groupId>
+                <artifactId>dynamo-image</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.breezeware.dynamo</groupId>
+                <artifactId>dynamo-docs</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.breezeware.dynamo</groupId>
+                <artifactId>dynamo-push-notification-svc</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.breezeware.dynamo</groupId>
+                <artifactId>dynamo-push-notification-bff</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.breezeware.dynamo</groupId>
+                <artifactId>dynamo-ai</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+</project>

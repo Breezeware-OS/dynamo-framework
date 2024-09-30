@@ -1,0 +1,19 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>net.breezeware.dynamo</groupId>
+        <artifactId>dynamo-framework</artifactId>
+        <version>1.44.0</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <groupId>net.breezeware.dynamo.aws</groupId>
+    <artifactId>dynamo-aws</artifactId>
+    <name>Dynamo AWS</name>
+    <packaging>pom</packaging>
+    <modules>
+        <module>dynamo-aws-ses</module>
+        <module>dynamo-aws-sns</module>
+        <module>dynamo-aws-s3</module>
+        <module>dynamo-aws-dynamodb</module>
+    </modules>
+</project>

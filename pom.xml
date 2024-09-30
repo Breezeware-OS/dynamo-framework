@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>net.breezeware.dynamo</groupId>
+    <artifactId>dynamo-framework</artifactId>
+    <packaging>pom</packaging>
+    <version>1.44.0</version>
+    <name>Dynamo Framework</name>
+    <description>Centralized Dependency and Plugin Management</description>
+
+    <modules>
+        <module>dynamo-auth</module>
+        <module>dynamo-aws</module>
+        <module>dynamo-batch</module>
+        <module>dynamo-csv</module>
+        <module>dynamo-generics-crud</module>
+        <module>dynamo-iac</module>
+        <module>dynamo-sdk-lib-bom</module>
+        <module>dynamo-utils</module>
+        <module>dynamo-logging</module>
+        <module>dynamo-workflow</module>
+        <module>dynamo-user-management</module>
+        <module>dynamo-form-builder</module>
+        <module>dynamo-image</module>
+        <module>dynamo-pages</module>
+        <module>dynamo-notification</module>
+        <module>dynamo-ai</module>
+    </modules>
+
+
+    <properties>
+        <!-- Default properties -->
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- ** Dependency management properties ** -->
+        <spring-boot-dependencies.version>3.2.5</spring-boot-dependencies.version>
+        <selenium.version>4.20.0</selenium.version>
+        <selenium-htmlunit.version>4.13.0</selenium-htmlunit.version>
+        <springdoc-openapi-starter-webmvc-ui.version>2.5.0</springdoc-openapi-starter-webmvc-ui.version>
+        <spring-security-jwt.version>1.1.1.RELEASE</spring-security-jwt.version>
+        <postgresql.version>42.7.3</postgresql.version>
+        <hibernate-validator-parent.version>8.0.1.Final</hibernate-validator-parent.version>
+        <aws.java.sdk.version>2.25.40</aws.java.sdk.version>
+        <aws-java-sdk.version>1.12.172</aws-java-sdk.version>
+        <wiremock.version>3.5.4</wiremock.version>
+        <nimbus-jose-jwt.version>9.37.3</nimbus-jose-jwt.version>
+        <spring-cloud-azure.version>4.3.0</spring-cloud-azure.version>
+        <opencsv.version>5.9</opencsv.version>
+        <commons-text.version>1.12.0</commons-text.version>
+        <json.version>20240303</json.version>
+        <microsoft-graph.version>5.42.0</microsoft-graph.version>
+        <azure-identity.version>1.5.2</azure-identity.version>
+        <flyway.version>10.11.1</flyway.version>
+        <imgscalr-lib.version>4.2</imgscalr-lib.version>
+        <querydsl.version>5.1.0</querydsl.version>
+
+        <!-- ** Plugin properties ** -->
+        <spring-boot-maven-plugin.version>3.2.5</spring-boot-maven-plugin.version>
+        <maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
+        <jib-maven-plugin.version>3.4.2</jib-maven-plugin.version>
+        <!-- jib maven plugin source container repository name. SHA256 id is optional -->
+        <jib-maven-plugin.container.source.image.name>
+            public.ecr.aws/breezeware/eclipse-temurin:17-jre-alpine@sha256:53c1ab8304498c5202f763fa4f1ae498a5cf738b428cc065de41284a015e63d0
+        </jib-maven-plugin.container.source.image.name>
+        <!-- jib maven plugin destination container repository name -->
+        <jib-maven-plugin.container.destination.repository.name>
+            305251478828.dkr.ecr.us-east-1.amazonaws.com/${project.artifactId}
+        </jib-maven-plugin.container.destination.repository.name>
+        <!-- jib maven plugin container image custom user id and group id -->
+        <!-- '1000:1000' refers to the respective 'uid:gid' of the user -->
+        <jib-maven-plugin.container.image.user.id>1000:1000</jib-maven-plugin.container.image.user.id>
+        <maven-exec-plugin.version>3.2.0</maven-exec-plugin.version>
+        <apt-maven-plugin.version>1.1.3</apt-maven-plugin.version>
+        <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
+        <maven-site-plugin.version>4.0.0-M13</maven-site-plugin.version>
+        <junit.version>5.11.0-M1</junit.version>
+
+        <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
+        <org.apache.maven.plugins.version>3.6.2</org.apache.maven.plugins.version>
+        <org.projectlombok.version>1.18.32</org.projectlombok.version>
+        <org.projectlombok.mapstruct.version>0.2.0</org.projectlombok.mapstruct.version>
+
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- Library for managing Spring Boot Dependencies -->
+            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- selenium dependency management -->
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-api</artifactId>
+                <version>${selenium.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-chrome-driver</artifactId>
+                <version>${selenium.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-edge-driver</artifactId>
+                <version>${selenium.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-firefox-driver</artifactId>
+                <version>${selenium.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-ie-driver</artifactId>
+                <version>${selenium.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-java</artifactId>
+                <version>${selenium.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-opera-driver</artifactId>
+                <version>${selenium.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-remote-driver</artifactId>
+                <version>${selenium.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-safari-driver</artifactId>
+                <version>${selenium.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-support</artifactId>
+                <version>${selenium.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>htmlunit-driver</artifactId>
+                <version>${selenium-htmlunit.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-text</artifactId>
+                <version>${commons-text.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.azure.spring</groupId>
+                <artifactId>spring-cloud-azure-dependencies</artifactId>
+                <version>${spring-cloud-azure.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Library for generating API docs with OpenAPI 3 specification -->
+            <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui -->
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>${springdoc-openapi-starter-webmvc-ui.version}</version>
+            </dependency>
+
+            <!-- Library for encoding and decoding JSON Web Tokens -->
+            <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-jwt -->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-jwt</artifactId>
+                <version>${spring-security-jwt.version}</version>
+            </dependency>
+
+            <!-- Library for providing PostgreSQL JDBC Driver support -->
+            <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate.validator</groupId>
+                <artifactId>hibernate-validator-parent</artifactId>
+                <version>${hibernate-validator-parent.version}</version>
+                <type>pom</type>
+            </dependency>
+
+            <!-- Library for managing AWS SDKs for java -->
+            <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
+            <dependency>
+                <groupId>com.amazonaws</groupId>
+                <artifactId>aws-java-sdk-bom</artifactId>
+                <version>${aws-java-sdk.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>bom</artifactId>
+                <version>${aws.java.sdk.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+
+            <!-- A web service test double for all occasions -->
+            <!-- https://mvnrepository.com/artifact/com.github.tomakehurst/wiremock -->
+            <dependency>
+                <groupId>com.github.tomakehurst</groupId>
+                <artifactId>wiremock</artifactId>
+                <version>${wiremock.version}</version>
+            </dependency>
+
+            <!-- Java library for Javascript Object Signing and Encryption (JOSE)
+                and JSON Web Tokens (JWT) -->
+            <!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
+            <dependency>
+                <groupId>com.nimbusds</groupId>
+                <artifactId>nimbus-jose-jwt</artifactId>
+                <version>${nimbus-jose-jwt.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.opencsv</groupId>
+                <artifactId>opencsv</artifactId>
+                <version>${opencsv.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.json</groupId>
+                <artifactId>json</artifactId>
+                <version>${json.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.microsoft.graph</groupId>
+                <artifactId>microsoft-graph</artifactId>
+                <version>${microsoft-graph.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.azure</groupId>
+                <artifactId>azure-identity</artifactId>
+                <version>${azure-identity.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${org.mapstruct.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-core</artifactId>
+                <version>${flyway.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-database-postgresql</artifactId>
+                <version>${flyway.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+                <version>${spring-boot-dependencies.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.imgscalr</groupId>
+                <artifactId>imgscalr-lib</artifactId>
+                <version>${imgscalr-lib.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-apt</artifactId>
+                <version>${querydsl.version}</version>
+                <classifier>jakarta</classifier>
+            </dependency>
+            <dependency>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-jpa</artifactId>
+                <classifier>jakarta</classifier>
+                <version>${querydsl.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Automatic Resource Management, automatic generation of getters, setters,
+            equals, hashCode and toString, and more! -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <!-- Plugin management for build lifecycle -->
+        <pluginManagement>
+            <plugins>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${org.apache.maven.plugins.version}</version>
+                    <configuration>
+                        <annotationProcessorPaths>
+                            <path>
+                                <groupId>org.mapstruct</groupId>
+                                <artifactId>mapstruct-processor</artifactId>
+                                <version>${org.mapstruct.version}</version>
+                            </path>
+                            <path>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                                <version>${org.projectlombok.version}</version>
+                            </path>
+                            <path>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok-mapstruct-binding</artifactId>
+                                <version>${org.projectlombok.mapstruct.version}</version>
+                            </path>
+                            <!-- other annotation processors -->
+                        </annotationProcessorPaths>
+                        <parameters>true</parameters>
+                    </configuration>
+                </plugin>
+
+                <!-- https://docs.spring.io/spring-boot/docs/2.6.3/maven-plugin/reference/htmlsingle/ -->
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot-maven-plugin.version}</version>
+                    <configuration>
+                        <!-- https://stackoverflow.com/questions/70207686/maven-requires-plugin-version-to-be-specified-for-the-managed-dependency-spring/70208349#70208349 -->
+                        <excludes>
+                            <exclude>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                            </exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
+
+                <!-- https://maven.apache.org/plugins/maven-javadoc-plugin/ -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${maven-javadoc-plugin.version}</version>
+                    <configuration>
+                        <detectLinks>true</detectLinks>
+                        <failOnError>true</failOnError>
+                        <!--                        <failOnWarnings>true</failOnWarnings>-->
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>javadoc</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- Plugin for container image generation & handling -->
+                <!-- https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin -->
+                <plugin>
+                    <groupId>com.google.cloud.tools</groupId>
+                    <artifactId>jib-maven-plugin</artifactId>
+                    <version>${jib-maven-plugin.version}</version>
+                    <configuration>
+                        <from>
+                            <image>
+                                ${jib-maven-plugin.container.source.image.name}
+                            </image>
+                            <platforms>
+                                <platform>
+                                    <architecture>amd64</architecture>
+                                    <os>linux</os>
+                                </platform>
+                            </platforms>
+                        </from>
+                        <to>
+                            <image>${jib-maven-plugin.container.destination.repository.name}</image>
+                            <tags>
+                                <tag>${project.version}</tag>
+                            </tags>
+                            <credHelper>ecr-login</credHelper>
+                        </to>
+                        <container>
+                            <format>OCI</format>
+                            <user>${jib-maven-plugin.container.image.user.id}</user>
+                            <ports>
+                                <port>8080</port>
+                                <port>8443</port>
+                            </ports>
+                            <volumes>/home/app/log</volumes>
+                            <labels>
+                                <version>${project.version}</version>
+                                <description>${project.description}</description>
+                                <vendor>Breezeware</vendor>
+                                <maintainer1>sathish@breezeware.net</maintainer1>
+                                <maintainer2>dinesh@breezeware.net</maintainer2>
+                            </labels>
+                        </container>
+                    </configuration>
+                </plugin>
+
+                <!-- Plugin for cdk app class handling -->
+                <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/exec-maven-plugin -->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>${maven-exec-plugin.version}</version>
+                </plugin>
+
+                <!-- Plugin for Maven integration of the Java APT functionality -->
+                <!-- https://mvnrepository.com/artifact/com.mysema.maven/apt-maven-plugin -->
+                <plugin>
+                    <groupId>com.mysema.maven</groupId>
+                    <artifactId>apt-maven-plugin</artifactId>
+                    <version>${apt-maven-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>process</goal>
+                            </goals>
+                            <configuration>
+                                <outputDirectory>target/generated-sources/java</outputDirectory>
+                                <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- https://maven.apache.org/plugins/maven-site-plugin/ -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>${maven-site-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>site</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.junit.jupiter</groupId>
+                            <artifactId>junit-jupiter-engine</artifactId>
+                            <version>${junit.version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+
+        <!-- Default plugins for build lifecycle -->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>${maven-site-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${org.apache.maven.plugins.version}</version>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <!-- Reporting plugins for site generation -->
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+                <configuration>
+                    <detectLinks>true</detectLinks>
+                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>javadoc</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </reporting>
+
+</project>
+

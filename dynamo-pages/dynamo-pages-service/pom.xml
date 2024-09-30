@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>net.breezeware.dynamo</groupId>
+        <artifactId>dynamo-pages</artifactId>
+        <version>1.44.0</version>
+    </parent>
+
+  <artifactId>dynamo-pages-service</artifactId>
+  <packaging>pom</packaging>
+  <name>Dynamo Pages Service</name>
+  <description>Maven module to manage all services supported by Dynamo pages Service</description>
+
+  <modules>
+    <module>dynamo-pages-svc</module>
+  </modules>
+</project>

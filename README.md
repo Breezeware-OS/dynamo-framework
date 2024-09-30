@@ -150,7 +150,7 @@ To build Dynamo from the source, follow these steps:
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/your-repo/dynamo-framework.git
+   git clone https://github.com/Breezeware-OS/dynamo-framework.git
    ```
 
 2. **Build the Project Using Maven:**

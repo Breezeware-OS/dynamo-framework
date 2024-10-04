@@ -19,6 +19,10 @@
     <a href="https://youtu.be/Gi6kUB-gNXE" target="_blank">
       Live Demo
     </a>
+    <span> | </span>
+    <a href="https://breezeware-os.github.io/dynamo-docs/" target="_blank">
+      Documentation
+    </a>
   </h3>
 </div>
 
